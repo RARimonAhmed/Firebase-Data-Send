@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_send_data/views/user_details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,10 +33,35 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-              onPressed: (() {
-                sendData();
-              }),
-              child: const Text('Send Data')),
+            onPressed: (() {
+              sendData();
+            }),
+            child: const Text(
+              'Send Data',
+              style: TextStyle(
+                color: Colors.amber,
+                fontSize: 20,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            onPressed: (() {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const UserDetails())));
+            }),
+            child: const Text(
+              'View User',
+              style: TextStyle(
+                color: Colors.pink,
+                fontSize: 20,
+              ),
+            ),
+          ),
         ],
       )),
     ));
